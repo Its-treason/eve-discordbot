@@ -50,4 +50,8 @@ client.on(`message`, message => {
     if(message.content.startsWith(prefix + 'hug')) {
         functions.hug(message, RichEmbed)
     }
+
+    if(message.content.startsWith(prefix + 'bite')) {
+        functions.bite(message, RichEmbed)
+    }
 });

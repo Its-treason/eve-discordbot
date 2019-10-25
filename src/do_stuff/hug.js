@@ -11,7 +11,7 @@ module.exports = {
             return;
         }
         const gifs = require('./hugs');
-        let gif = gifs[Math.floor(Math.random() * Math.floor(16))];
+        let gif = gifs[Math.floor(Math.random() * Math.floor(15))];
         const embed = new RichEmbed()
             .setColor('#ff63f6')
             .setTitle(message.author.username + ' hugs ' + mention.username)
