@@ -1,15 +1,14 @@
 ﻿const {Client, RichEmbed, ClientUser} = require('discord.js');
 const fs = require("fs");
-const { prefix, token, activity } = require('./conf.json');
-
+const {prefix, token, activity} = require('./conf.json');
 
 const client = new Client();
-let ehre = require("./ehre.json"); // include ehre file
+let ehre = require("./data/ehre.json"); // include ehre file
 
 // login the Client
-client.login(token).then(r => {
-    console.log('[INFO] Login token is: ' + r)
-}).catch( e => {
+client.login(token).then(token => {
+    console.log('[INFO] Login token is: ' + token)
+}).catch(e => {
     console.log('[FAIL] Is the login token wrong?');
     console.log('[INFO] Program will be stopped!');
 });
@@ -24,9 +23,24 @@ client.on('ready', () => {
 
 client.on('error' , console.error);
 
-
 const functions = require('./src/autoload');
 
+let tmp_time = [];
+
+client.on('voiceStateUpdate', (oldMember, newMember) => {
+    let newUserChannel = newMember.voiceChannel;
+    let oldUserChannel = oldMember.voiceChannel;
+
+    if(oldUserChannel === undefined && newUserChannel !== undefined) {
+        let user = newMember.user;
+
+        tmp_time = functions.count(fs, user, true, tmp_time);
+    } else if(newUserChannel === undefined){
+        let user = oldMember.user;
+
+        tmp_time = functions.count(fs, user, false, tmp_time);
+    }
+});
 
 client.on(`message`, message => {
     message.content = message.content.toLowerCase();

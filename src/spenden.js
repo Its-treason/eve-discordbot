@@ -29,7 +29,7 @@ module.exports = {
                 ehre[message.author.id] = {
                     ehre: 100
                 };
-                fs.writeFile("./ehre.json", JSON.stringify(ehre), (err) => {
+                fs.writeFile(__dirname + "/../data/ehre.json", JSON.stringify(ehre), (err) => {
                     if (err) console.log(err);
                 });
             }
@@ -46,21 +46,21 @@ module.exports = {
                 ehre[message.author.id] = {
                     ehre: ehre[message.author.id].ehre - number
                 };
-                fs.writeFile("./ehre.json", JSON.stringify(ehre), (err) => {
+                fs.writeFile(__dirname + "/../data/ehre.json", JSON.stringify(ehre), (err) => {
                     if (err) console.log(err);
                 });
                 if (!ehre[mention.id]) {
                     ehre[mention.id] = {
                         ehre: 100
                     };
-                    fs.writeFile("./ehre.json", JSON.stringify(ehre), (err) => {
+                    fs.writeFile(__dirname + "/../data/ehre.json", JSON.stringify(ehre), (err) => {
                         if (err) console.log(err);
                     });
                 }
                 ehre[mention.id] = {
                     ehre: ehre[mention.id].ehre + number
                 };
-                fs.writeFile("./ehre.json", JSON.stringify(ehre), (err) => {
+                fs.writeFile(__dirname + "/../data/ehre.json", JSON.stringify(ehre), (err) => {
                     if (err) console.log(err);
                 });
                 const embed = new RichEmbed()

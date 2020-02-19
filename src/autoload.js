@@ -1,7 +1,8 @@
-const version = require('./version.js');
+const version = require('./version');
 const ehre = require('./ehre');
 const spenden = require('./spenden');
 const fordern = require('./fordern');
+const count = require('./count');
 const hug = require('./do_stuff/hug');
 const bite = require('./do_stuff/bite');
 
@@ -12,4 +13,5 @@ module.exports = {
     fordern: fordern.fordern,
     hug: hug.hug,
     bite: bite.bite,
+    count: count.count,
 };
