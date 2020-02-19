@@ -68,4 +68,8 @@ client.on(`message`, message => {
     if(message.content.startsWith(prefix + 'bite')) {
         functions.bite(message, RichEmbed)
     }
+
+    if(message.content.startsWith(prefix + 'time')) {
+        functions.show_time(message, fs, RichEmbed)
+    }
 });
